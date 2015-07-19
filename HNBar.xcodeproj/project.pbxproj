@@ -10,6 +10,8 @@
 		147C60251B5C256A001575C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147C60241B5C256A001575C5 /* AppDelegate.swift */; };
 		147C60271B5C256A001575C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 147C60261B5C256A001575C5 /* Assets.xcassets */; };
 		147C602A1B5C256A001575C5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147C60281B5C256A001575C5 /* MainMenu.xib */; };
+		147C60351B5C2E90001575C5 /* HackerNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147C60331B5C2E90001575C5 /* HackerNewsViewController.swift */; };
+		147C60361B5C2E90001575C5 /* HackerNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147C60341B5C2E90001575C5 /* HackerNewsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,8 @@
 		147C60261B5C256A001575C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		147C60291B5C256A001575C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		147C602B1B5C256A001575C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		147C60331B5C2E90001575C5 /* HackerNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackerNewsViewController.swift; sourceTree = "<group>"; };
+		147C60341B5C2E90001575C5 /* HackerNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HackerNewsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 				147C60261B5C256A001575C5 /* Assets.xcassets */,
 				147C60281B5C256A001575C5 /* MainMenu.xib */,
 				147C602B1B5C256A001575C5 /* Info.plist */,
+				147C60331B5C2E90001575C5 /* HackerNewsViewController.swift */,
+				147C60341B5C2E90001575C5 /* HackerNewsViewController.xib */,
 			);
 			path = HNBar;
 			sourceTree = "<group>";
@@ -117,6 +123,7 @@
 			files = (
 				147C60271B5C256A001575C5 /* Assets.xcassets in Resources */,
 				147C602A1B5C256A001575C5 /* MainMenu.xib in Resources */,
+				147C60361B5C2E90001575C5 /* HackerNewsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				147C60251B5C256A001575C5 /* AppDelegate.swift in Sources */,
+				147C60351B5C2E90001575C5 /* HackerNewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
