@@ -12,6 +12,7 @@
 		147C602A1B5C256A001575C5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147C60281B5C256A001575C5 /* MainMenu.xib */; };
 		147C60351B5C2E90001575C5 /* HackerNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147C60331B5C2E90001575C5 /* HackerNewsViewController.swift */; };
 		147C60361B5C2E90001575C5 /* HackerNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147C60341B5C2E90001575C5 /* HackerNewsViewController.xib */; };
+		7FE0C2D37F19D13C08910355 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61AF103B1487952ADBEE2AB1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,10 @@
 		147C602B1B5C256A001575C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		147C60331B5C2E90001575C5 /* HackerNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackerNewsViewController.swift; sourceTree = "<group>"; };
 		147C60341B5C2E90001575C5 /* HackerNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HackerNewsViewController.xib; sourceTree = "<group>"; };
+		14A1D2971B5C49F4003CDC6C /* HNBar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HNBar-Bridging-Header.h"; sourceTree = "<group>"; };
+		3C3EA7D829897A85E9827330 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		61AF103B1487952ADBEE2AB1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7BF9DFD2112506F63C0E98F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FE0C2D37F19D13C08910355 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +46,8 @@
 			children = (
 				147C60231B5C256A001575C5 /* HNBar */,
 				147C60221B5C256A001575C5 /* Products */,
+				65611722BBE19C617FBCA16E /* Pods */,
+				C67BE658B55BE1CB7D63EF08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +68,26 @@
 				147C602B1B5C256A001575C5 /* Info.plist */,
 				147C60331B5C2E90001575C5 /* HackerNewsViewController.swift */,
 				147C60341B5C2E90001575C5 /* HackerNewsViewController.xib */,
+				14A1D2971B5C49F4003CDC6C /* HNBar-Bridging-Header.h */,
 			);
 			path = HNBar;
+			sourceTree = "<group>";
+		};
+		65611722BBE19C617FBCA16E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C3EA7D829897A85E9827330 /* Pods.debug.xcconfig */,
+				A7BF9DFD2112506F63C0E98F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C67BE658B55BE1CB7D63EF08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61AF103B1487952ADBEE2AB1 /* libPods.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +97,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 147C602E1B5C256A001575C5 /* Build configuration list for PBXNativeTarget "HNBar" */;
 			buildPhases = (
+				FEA985CBA265318FF51F40A0 /* Check Pods Manifest.lock */,
 				147C601D1B5C256A001575C5 /* Sources */,
 				147C601E1B5C256A001575C5 /* Frameworks */,
 				147C601F1B5C256A001575C5 /* Resources */,
+				75E532A4CCBABCFE7C19EF32 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -90,6 +118,7 @@
 		147C60191B5C256A001575C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "James Hurst";
 				TargetAttributes = {
@@ -128,6 +157,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		75E532A4CCBABCFE7C19EF32 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEA985CBA265318FF51F40A0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		147C601D1B5C256A001575C5 /* Sources */ = {
@@ -235,25 +297,32 @@
 		};
 		147C602F1B5C256A001575C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C3EA7D829897A85E9827330 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = HNBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.jameshurst.HNBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HNBar/HNBar-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		147C60301B5C256A001575C5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7BF9DFD2112506F63C0E98F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = HNBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.jameshurst.HNBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HNBar/HNBar-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -276,6 +345,7 @@
 				147C60301B5C256A001575C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
