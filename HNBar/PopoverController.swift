@@ -1,0 +1,135 @@
+//
+//  PopoverController.swift
+//  HNBar
+//
+//  Created by James on 2015-07-20.
+//  Copyright © 2015 James Hurst. All rights reserved.
+//
+
+import Cocoa
+
+class PopoverController: NSObject, NSWindowDelegate {
+    
+    // MARK: - Public Properties
+    var shown: Bool {
+        return popoverWindow.keyWindow
+    }
+    
+    private var _contentViewController: NSViewController?
+    var contentViewController: NSViewController? {
+        get {
+            return _contentViewController
+        }
+        set {
+            if newValue == _contentViewController {
+                return
+            }
+            
+            _contentViewController = newValue
+            contentSize = newValue?.view.frame.size ?? NSZeroSize
+            popoverWindow.popoverContentView = _contentViewController?.view
+        }
+    }
+    
+    // MARK: Forwarded
+    var arrowWidth: CGFloat {
+        get { return popoverWindow.arrowWidth }
+        set { popoverWindow.arrowWidth = newValue }
+    }
+    
+    var arrowHeight: CGFloat {
+        get { return popoverWindow.arrowHeight }
+        set { popoverWindow.arrowHeight = newValue }
+    }
+    
+    var cornerRadius: CGFloat {
+        get { return popoverWindow.cornerRadius }
+        set { popoverWindow.cornerRadius = newValue }
+    }
+    
+    var backgroundColor: NSColor! {
+        get { return popoverWindow.popoverBackgroundColor }
+        set { popoverWindow.popoverBackgroundColor = newValue }
+    }
+    
+    var borderWidth: CGFloat {
+        get { return popoverWindow.borderWidth }
+        set { popoverWindow.borderWidth = newValue }
+    }
+    
+    var borderColor: NSColor {
+        get { return popoverWindow.borderColor }
+        set { popoverWindow.borderColor = newValue }
+    }
+    
+    var contentSize: NSSize = NSZeroSize
+    
+    // MARK: - Private properties
+    private var popoverWindow = PopoverWindow()
+    private var presentingFrameInScreen: NSRect = NSZeroRect
+    
+    // MARK: - Init
+    override init() {
+        super.init()
+        popoverWindow.delegate = self
+    }
+    
+    // MARK: - Helpers
+    private func popoverFrameWithSize(size: NSSize) -> NSRect {
+        let contentRect = NSRect(origin: NSZeroPoint, size: size)
+        var windowFrame = popoverWindow.frameRectForContentRect(contentRect)
+        windowFrame.origin = NSPoint(x: NSMidX(presentingFrameInScreen) - floor(windowFrame.size.width / 2), y: NSMinY(presentingFrameInScreen) - windowFrame.size.height)
+        return windowFrame
+    }
+    
+    // MARK - Popover window management
+    func showRelativeToRect(positioningRect: NSRect, ofView positioningView: NSView, preferredEdge: NSRectEdge) {
+        if shown {
+            return
+        }
+        
+        if let window = positioningView.window {
+            let frameInWindow = positioningView.convertRect(positioningRect, toView: nil)
+            presentingFrameInScreen = window.convertRectToScreen(frameInWindow)
+            
+            NSApp.activateIgnoringOtherApps(true)
+            popoverWindow.alphaValue = 0
+            popoverWindow.setFrame(popoverFrameWithSize(contentSize), display: true)
+            popoverWindow.makeKeyAndOrderFront(nil)
+            
+            NSAnimationContext.beginGrouping()
+            NSAnimationContext.currentContext().duration = 0.1
+            popoverWindow.animator().alphaValue = 1
+            NSAnimationContext.endGrouping()
+        }
+    }
+    
+    func close() {
+        if !shown {
+            return
+        }
+        
+        let closeDuration = 0.1
+        
+        NSAnimationContext.beginGrouping()
+        NSAnimationContext.currentContext().duration = closeDuration
+        popoverWindow.animator().alphaValue = 0
+        NSAnimationContext.endGrouping()
+        
+        self.popoverWindow.orderOut(nil)
+    }
+    
+    // MARK: - NSWindowDelegate
+    func windowDidResize(notification: NSNotification) {
+        popoverWindow.arrowX = self.contentSize.width / 2
+    }
+    
+    func windowWillClose(notification: NSNotification) {
+        self.close()
+    }
+    
+    func windowDidResignKey(notification: NSNotification) {
+        self.close()
+    }
+    
+}

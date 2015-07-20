@@ -11,8 +11,10 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    let popover = NSPopover()
+    let popover = PopoverController()
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    let hackerNewsViewController = HackerNewsViewController()
+//    let panelController = HackerNewsPanelController()
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         if let button = statusItem.button {
@@ -20,15 +22,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.action = Selector("togglePopover:")
         }
         
-        popover.contentViewController = HackerNewsViewController()
-        popover.appearance = NSAppearance(named: NSAppearanceNameAqua)
-        popover.behavior = .Transient
+        popover.contentViewController = hackerNewsViewController
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
-
+    
     func showPopover(sender: AnyObject?) {
         if let button = statusItem.button {
             popover.showRelativeToRect(button.bounds, ofView: button, preferredEdge: .MinY)
