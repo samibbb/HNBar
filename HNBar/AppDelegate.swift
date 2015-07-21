@@ -21,6 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         popover.contentViewController = HackerNewsViewController()
+        popover.appearance = NSAppearance(named: NSAppearanceNameAqua)
+        popover.behavior = .Transient
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -34,7 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func closePopover(sender: AnyObject?) {
-        popover.performClose(sender)
+        popover.close()
     }
     
     func togglePopover(sender: AnyObject?) {

@@ -19,10 +19,11 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
     }
     
     @IBOutlet var tableView: NSTableView!
+    @IBOutlet var separatorView: ColorView!
     
     private var isFetching = false
     private var stories: Array<Story> = Array()
-    private var firebase: Firebase!
+    private var firebase: Firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
     
     override var nibName: String? {
         return "HackerNewsViewController"
@@ -32,18 +33,9 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
         return NSBundle.mainBundle()
     }
     
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        commonInit()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
-    
-    func commonInit() {
-        firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        separatorView.backgroundColor = NSColor(colorLiteralRed: 227/255, green: 227/255, blue: 227/255, alpha: 0.8)
     }
     
     override func viewWillAppear() {

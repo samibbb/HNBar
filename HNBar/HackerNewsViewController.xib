@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HackerNewsViewController" customModule="HNBar" customModuleProvider="target">
             <connections>
+                <outlet property="separatorView" destination="jPl-y8-wD7" id="Kea-yw-hda"/>
                 <outlet property="tableView" destination="j8f-Bp-plJ" id="RSX-Ps-AzX"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -16,14 +17,38 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="2mx-9c-dcR" userLabel="Header View">
+                    <rect key="frame" x="0.0" y="228" width="480" height="44"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2eu-fx-8KF">
+                            <rect key="frame" x="194" y="13" width="93" height="18"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="HackerNews" id="Su3-fJ-huE">
+                                <font key="font" metaFont="systemBold" size="14"/>
+                                <color key="textColor" red="0.13131313131313127" green="0.13131313131313127" blue="0.13131313131313127" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="99r-Fd-iKp"/>
+                        <constraint firstItem="2eu-fx-8KF" firstAttribute="centerY" secondItem="2mx-9c-dcR" secondAttribute="centerY" id="W3k-Jp-srt"/>
+                        <constraint firstItem="2eu-fx-8KF" firstAttribute="centerX" secondItem="2mx-9c-dcR" secondAttribute="centerX" id="iMw-df-93I"/>
+                    </constraints>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="jPl-y8-wD7" customClass="ColorView" customModule="HNBar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="226" width="480" height="2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="3Kp-h5-yEQ"/>
+                    </constraints>
+                </customView>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCh-og-RID">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="fmo-Jo-shY">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
+                    <clipView key="contentView" copiesOnScroll="NO" id="fmo-Jo-shY">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="j8f-Bp-plJ">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -68,7 +93,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Ecs-7C-DYt">
                         <rect key="frame" x="1" y="119" width="223" height="15"/>
@@ -82,9 +107,15 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="DCh-og-RID" secondAttribute="bottom" id="3PP-ay-eNT"/>
+                <constraint firstItem="DCh-og-RID" firstAttribute="top" secondItem="jPl-y8-wD7" secondAttribute="bottom" id="4my-gj-Hny"/>
+                <constraint firstItem="2mx-9c-dcR" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="FoZ-db-d3y"/>
+                <constraint firstItem="2mx-9c-dcR" firstAttribute="bottom" secondItem="jPl-y8-wD7" secondAttribute="top" id="Ipy-NH-Ccp"/>
+                <constraint firstAttribute="trailing" secondItem="jPl-y8-wD7" secondAttribute="trailing" id="KhQ-wC-ful"/>
+                <constraint firstItem="2mx-9c-dcR" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="XOC-d0-bSQ"/>
                 <constraint firstAttribute="trailing" secondItem="DCh-og-RID" secondAttribute="trailing" id="dz3-Yh-eOb"/>
+                <constraint firstAttribute="trailing" secondItem="2mx-9c-dcR" secondAttribute="trailing" id="hDQ-y8-yxJ"/>
+                <constraint firstItem="jPl-y8-wD7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="mVt-DP-0us"/>
                 <constraint firstItem="DCh-og-RID" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="oSv-A6-SEC"/>
-                <constraint firstItem="DCh-og-RID" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="rKp-S9-rid"/>
             </constraints>
         </customView>
     </objects>
