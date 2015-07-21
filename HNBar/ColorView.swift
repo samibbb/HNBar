@@ -14,9 +14,19 @@ class ColorView: NSView {
         didSet { self.needsDisplay = true }
     }
     
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        self.wantsLayer = true
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.wantsLayer = true
+    }
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-        backgroundColor.set()
+        backgroundColor.setFill()
         NSRectFill(dirtyRect)
     }
     

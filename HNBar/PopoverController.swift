@@ -11,8 +11,11 @@ import Cocoa
 class PopoverController: NSObject, NSWindowDelegate {
     
     // MARK: - Public Properties
+    var openAnimationDuration = 0.15
+    var closeAnimationDuration = 0.15
+    
     var shown: Bool {
-        return popoverWindow.keyWindow
+        return popoverWindow.visible
     }
     
     private var _contentViewController: NSViewController?
@@ -98,7 +101,7 @@ class PopoverController: NSObject, NSWindowDelegate {
             popoverWindow.makeKeyAndOrderFront(nil)
             
             NSAnimationContext.beginGrouping()
-            NSAnimationContext.currentContext().duration = 0.1
+            NSAnimationContext.currentContext().duration = openAnimationDuration
             popoverWindow.animator().alphaValue = 1
             NSAnimationContext.endGrouping()
         }
@@ -109,10 +112,8 @@ class PopoverController: NSObject, NSWindowDelegate {
             return
         }
         
-        let closeDuration = 0.1
-        
         NSAnimationContext.beginGrouping()
-        NSAnimationContext.currentContext().duration = closeDuration
+        NSAnimationContext.currentContext().duration = closeAnimationDuration
         popoverWindow.animator().alphaValue = 0
         NSAnimationContext.endGrouping()
         

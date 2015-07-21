@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14F6a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14F6a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8152.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8164.2"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HackerNewsViewController" customModule="HNBar" customModuleProvider="target">
@@ -14,15 +15,15 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="408"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="2mx-9c-dcR" userLabel="Header View">
-                    <rect key="frame" x="0.0" y="228" width="480" height="44"/>
+                    <rect key="frame" x="0.0" y="364" width="350" height="44"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2eu-fx-8KF">
-                            <rect key="frame" x="194" y="13" width="93" height="18"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="HackerNews" id="Su3-fJ-huE">
+                            <rect key="frame" x="127" y="13" width="97" height="18"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hacker News" id="Su3-fJ-huE">
                                 <font key="font" metaFont="systemBold" size="14"/>
                                 <color key="textColor" red="0.13131313131313127" green="0.13131313131313127" blue="0.13131313131313127" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -36,19 +37,19 @@
                     </constraints>
                 </customView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="jPl-y8-wD7" customClass="ColorView" customModule="HNBar" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="226" width="480" height="2"/>
+                    <rect key="frame" x="0.0" y="362" width="350" height="2"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="2" id="3Kp-h5-yEQ"/>
                     </constraints>
                 </customView>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCh-og-RID">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
+                    <rect key="frame" x="0.0" y="0.0" width="350" height="362"/>
                     <clipView key="contentView" copiesOnScroll="NO" id="fmo-Jo-shY">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="362"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="j8f-Bp-plJ">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="362"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -104,6 +105,15 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <box fixedFrame="YES" transparent="YES" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="XBE-OD-kZz">
+                    <rect key="frame" x="0.0" y="-80" width="6" height="6"/>
+                    <view key="contentView" ambiguous="YES" id="oce-PX-I0H">
+                        <rect key="frame" x="1" y="1" width="4" height="4"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="DCh-og-RID" secondAttribute="bottom" id="3PP-ay-eNT"/>
@@ -117,6 +127,7 @@
                 <constraint firstItem="jPl-y8-wD7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="mVt-DP-0us"/>
                 <constraint firstItem="DCh-og-RID" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="oSv-A6-SEC"/>
             </constraints>
+            <point key="canvasLocation" x="682" y="497"/>
         </customView>
     </objects>
 </document>

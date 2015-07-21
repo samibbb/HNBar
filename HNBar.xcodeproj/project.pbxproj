@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		147A131F1B5DCF7200C51FEF /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A131E1B5DCF7200C51FEF /* ColorView.swift */; };
 		147A12FA1B5D695E00C51FEF /* PopoverContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A12F91B5D695E00C51FEF /* PopoverContainerView.swift */; };
 		147A13011B5D6F5600C51FEF /* HackerNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A12FF1B5D6F5600C51FEF /* HackerNewsViewController.swift */; };
 		147A13061B5D88BA00C51FEF /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A13051B5D88BA00C51FEF /* Story.swift */; };
 		147A130C1B5D937000C51FEF /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A130B1B5D937000C51FEF /* PopoverWindow.swift */; };
 		147A130E1B5D979A00C51FEF /* PopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A130D1B5D979A00C51FEF /* PopoverController.swift */; };
 		147A13121B5DA59C00C51FEF /* HackerNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147A13111B5DA59C00C51FEF /* HackerNewsViewController.xib */; };
+		147A131F1B5DCF7200C51FEF /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A131E1B5DCF7200C51FEF /* ColorView.swift */; };
 		147C60251B5C256A001575C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147C60241B5C256A001575C5 /* AppDelegate.swift */; };
 		147C60271B5C256A001575C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 147C60261B5C256A001575C5 /* Assets.xcassets */; };
 		147C602A1B5C256A001575C5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147C60281B5C256A001575C5 /* MainMenu.xib */; };
@@ -21,13 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		147A131E1B5DCF7200C51FEF /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		147A12F91B5D695E00C51FEF /* PopoverContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverContainerView.swift; sourceTree = "<group>"; };
 		147A12FF1B5D6F5600C51FEF /* HackerNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackerNewsViewController.swift; sourceTree = "<group>"; };
 		147A13051B5D88BA00C51FEF /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		147A130B1B5D937000C51FEF /* PopoverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverWindow.swift; sourceTree = "<group>"; };
 		147A130D1B5D979A00C51FEF /* PopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverController.swift; sourceTree = "<group>"; };
 		147A13111B5DA59C00C51FEF /* HackerNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HackerNewsViewController.xib; sourceTree = "<group>"; };
+		147A131E1B5DCF7200C51FEF /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		147C60211B5C256A001575C5 /* HNBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HNBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		147C60241B5C256A001575C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		147C60261B5C256A001575C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,20 +51,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		143DA6951B5ED7B5001734F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				147A131E1B5DCF7200C51FEF /* ColorView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		147A13071B5D8A7800C51FEF /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				147A13051B5D88BA00C51FEF /* Story.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		147A13091B5D8A8800C51FEF /* Interface Builder */ = {
-			isa = PBXGroup;
-			children = (
-				147C60281B5C256A001575C5 /* MainMenu.xib */,
-			);
-			name = "Interface Builder";
 			sourceTree = "<group>";
 		};
 		147A130A1B5D8A9500C51FEF /* View Controllers */ = {
@@ -112,15 +112,10 @@
 				147C60241B5C256A001575C5 /* AppDelegate.swift */,
 				147C60261B5C256A001575C5 /* Assets.xcassets */,
 				147C60281B5C256A001575C5 /* MainMenu.xib */,
-				147C602B1B5C256A001575C5 /* Info.plist */,
-				147C60331B5C2E90001575C5 /* HackerNewsViewController.swift */,
-				147C60341B5C2E90001575C5 /* HackerNewsViewController.xib */,
-				14A1D2971B5C49F4003CDC6C /* HNBar-Bridging-Header.h */,
-				147A131E1B5DCF7200C51FEF /* ColorView.swift */,
-				147A13091B5D8A8800C51FEF /* Interface Builder */,
 				147A13071B5D8A7800C51FEF /* Model */,
 				147A13101B5DA1EE00C51FEF /* Popover */,
 				147A130A1B5D8A9500C51FEF /* View Controllers */,
+				143DA6951B5ED7B5001734F7 /* Views */,
 			);
 			path = HNBar;
 			sourceTree = "<group>";

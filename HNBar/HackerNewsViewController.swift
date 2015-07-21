@@ -10,29 +10,29 @@ import Cocoa
 
 class HackerNewsViewController: NSViewController, NSTableViewDataSource {
     
-    override var nibBundle: NSBundle? {
-        return NSBundle.mainBundle()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        separatorView.backgroundColor = NSColor(colorLiteralRed: 227/255, green: 227/255, blue: 227/255, alpha: 0.8)
-    }
-    override var nibName: String? {
-        return "HackerNewsViewController"
-    }
-
-    
     // MARK: Firebase properties
     private var isFetching = false
     private var stories: Array<Story> = Array()
     private var firebase: Firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
     
     // MARK: Views
+    @IBOutlet var separatorView: ColorView!
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var scrollView: NSScrollView!
     
     // MARK: - View Lifecycle
+    override var nibBundle: NSBundle? {
+        return NSBundle.mainBundle()
+    }
+    
+    override var nibName: String? {
+        return "HackerNewsViewController"
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        separatorView.backgroundColor = NSColor(calibratedWhite: 0.8, alpha: 1)
+    }
     
     override func viewWillAppear() {
         super.viewWillAppear()

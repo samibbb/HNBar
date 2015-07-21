@@ -89,7 +89,7 @@ class PopoverClippingView: NSView {
         didSet { self.needsDisplay = true }
     }
     
-    var borderColor: NSColor = NSColor(calibratedWhite: 0, alpha: 0.75) {
+    var borderColor: NSColor = NSColor(calibratedWhite: 0, alpha: 0.3) {
         didSet { self.needsDisplay = true }
     }
     
