@@ -102,7 +102,7 @@ class PopoverClippingView: NSView {
         let path = CGPathCreateMutable()
         var didClosePath = false
         
-        for i in Range(start: 0, end: nsPath.elementCount) {
+        for i in 0..<nsPath.elementCount {
             var points = [NSPoint](count: 3, repeatedValue: NSZeroPoint)
             
             switch nsPath.elementAtIndex(i, associatedPoints: &points) {

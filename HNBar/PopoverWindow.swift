@@ -100,7 +100,8 @@ class PopoverWindow: NSWindow {
         return NSInsetRect(windowFrame, borderWidth, borderWidth)
     }
     
-    override func frameRectForContentRect(contentRect: NSRect) -> NSRect {
-        return NSInsetRect(contentRect, borderWidth, -arrowHeight - borderWidth)
+    override func frameRectForContentRect(var contentRect: NSRect) -> NSRect {
+        contentRect.size.height += arrowHeight
+        return NSInsetRect(contentRect, -borderWidth, -borderWidth)
     }
 }

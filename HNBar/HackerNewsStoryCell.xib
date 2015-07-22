@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14F6a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8164.2"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="HackerNewsStoryCell" customModule="HNBar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="273" height="73"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p2p-Lk-TCO">
+                    <rect key="frame" x="18" y="46" width="237" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Label" id="vVq-xd-msy">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cWF-xd-qWJ">
+                    <rect key="frame" x="18" y="28" width="237" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Label" id="NjM-Av-pC5">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lLk-uF-Eur">
+                    <rect key="frame" x="18" y="10" width="237" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Label" id="gGA-U2-mNV">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="p2p-Lk-TCO" secondAttribute="trailing" constant="20" id="3lm-yn-nCS"/>
+                <constraint firstAttribute="bottom" secondItem="lLk-uF-Eur" secondAttribute="bottom" constant="10" id="501-EO-sa5"/>
+                <constraint firstItem="lLk-uF-Eur" firstAttribute="top" secondItem="cWF-xd-qWJ" secondAttribute="bottom" constant="4" id="HjR-O6-7dV"/>
+                <constraint firstItem="cWF-xd-qWJ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="MA9-aK-YiU"/>
+                <constraint firstItem="p2p-Lk-TCO" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="Qe5-4q-f46"/>
+                <constraint firstAttribute="trailing" secondItem="lLk-uF-Eur" secondAttribute="trailing" constant="20" id="ZHM-sc-uze"/>
+                <constraint firstAttribute="trailing" secondItem="cWF-xd-qWJ" secondAttribute="trailing" constant="20" id="lmQ-5y-okh"/>
+                <constraint firstItem="p2p-Lk-TCO" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="pDD-DN-RIk"/>
+                <constraint firstItem="lLk-uF-Eur" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="plV-Bi-ppw"/>
+                <constraint firstItem="cWF-xd-qWJ" firstAttribute="top" secondItem="p2p-Lk-TCO" secondAttribute="bottom" constant="4" id="sYw-cE-l8W"/>
+            </constraints>
+            <connections>
+                <outlet property="bylineLabel" destination="lLk-uF-Eur" id="3Mq-54-B6C"/>
+                <outlet property="hostnameLabel" destination="cWF-xd-qWJ" id="JKt-LP-JsA"/>
+                <outlet property="titleLabel" destination="p2p-Lk-TCO" id="ane-1D-ZYc"/>
+            </connections>
+            <point key="canvasLocation" x="338.5" y="376.5"/>
+        </customView>
+    </objects>
+</document>
