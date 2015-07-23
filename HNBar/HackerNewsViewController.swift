@@ -10,17 +10,19 @@ import Cocoa
 
 class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     
+    private let hackerNewsUrl = "https://news.ycombinator.com"
+    
     // MARK: Firebase properties
     private var isFetching = false
     private var stories: Array<Story> = Array()
     private var firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
     
     // MARK: Views
-    @IBOutlet var separatorView: ColorView!
-    @IBOutlet var tableView: NSTableView!
-    @IBOutlet var scrollView: NSScrollView!
+    @IBOutlet private var separatorView: ColorView!
+    @IBOutlet private var tableView: NSTableView!
+    @IBOutlet private var scrollView: NSScrollView!
     
-    // MARK: - View Lifecycle
+    // MARK: - View lifecycle
     override var nibBundle: NSBundle? {
         return NSBundle.mainBundle()
     }
@@ -74,7 +76,7 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
                     if let url = snapshot.value["url"] as? String where url.characters.count > 0 {
                         urlString = url
                     } else {
-                        urlString = "https://news.ycombinator.com/item?id=\(id)"
+                        urlString = "\(self.hackerNewsUrl)/item?id=\(id)"
                     }
                     
                     if let url = NSURL(string: urlString) {
@@ -85,6 +87,7 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
                     }
                     
                     if ++storiesProcessed == ids.count {
+                        self.tableView.scrollPoint(NSZeroPoint)
                         self.tableView.reloadData()
                         self.isFetching = false
                     }
@@ -105,8 +108,23 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
     }
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        if row >= stories.count {
+            return nil
+        }
+        
         let cell = tableView.makeViewWithIdentifier("HackerNewsStoryCell", owner: self) as! HackerNewsStoryCell
         cell.populate(stories[row])
         return cell
+    }
+    
+    // MARK: - Button handlers
+    @IBAction func webButtonClicked(sender: AnyObject?) {
+        if let url = NSURL(string: hackerNewsUrl) {
+            NSWorkspace.sharedWorkspace().openURL(url)
+        }
+    }
+    
+    @IBAction func refreshButtonClicked(sender: AnyObject?) {
+        fetchStories()
     }
 }

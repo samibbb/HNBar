@@ -10,7 +10,7 @@ import Cocoa
 
 class PopoverController: NSObject, NSWindowDelegate {
     
-    // MARK: - Public Properties
+    // MARK: - Public properties
     var openAnimationDuration = 0.15
     var closeAnimationDuration = 0.15
     
@@ -18,19 +18,10 @@ class PopoverController: NSObject, NSWindowDelegate {
         return popoverWindow.visible
     }
     
-    private var _contentViewController: NSViewController?
     var contentViewController: NSViewController? {
-        get {
-            return _contentViewController
-        }
-        set {
-            if newValue == _contentViewController {
-                return
-            }
-            
-            _contentViewController = newValue
-            contentSize = newValue?.view.frame.size ?? NSZeroSize
-            popoverWindow.popoverContentView = _contentViewController?.view
+        didSet {
+            contentSize = contentViewController?.view.frame.size ?? NSZeroSize
+            popoverWindow.popoverContentView = contentViewController?.view
         }
     }
     
@@ -50,11 +41,6 @@ class PopoverController: NSObject, NSWindowDelegate {
         set { popoverWindow.cornerRadius = newValue }
     }
     
-    var backgroundColor: NSColor! {
-        get { return popoverWindow.popoverBackgroundColor }
-        set { popoverWindow.popoverBackgroundColor = newValue }
-    }
-    
     var borderWidth: CGFloat {
         get { return popoverWindow.borderWidth }
         set { popoverWindow.borderWidth = newValue }
@@ -65,24 +51,20 @@ class PopoverController: NSObject, NSWindowDelegate {
         set { popoverWindow.borderColor = newValue }
     }
     
+    var backgroundColor: NSColor! {
+        get { return popoverWindow.popoverBackgroundColor }
+        set { popoverWindow.popoverBackgroundColor = newValue }
+    }
+    
     var contentSize: NSSize = NSZeroSize
     
     // MARK: - Private properties
     private var popoverWindow = PopoverWindow()
-    private var presentingFrameInScreen: NSRect = NSZeroRect
     
     // MARK: - Init
     override init() {
         super.init()
         popoverWindow.delegate = self
-    }
-    
-    // MARK: - Helpers
-    private func popoverFrameWithSize(size: NSSize) -> NSRect {
-        let contentRect = NSRect(origin: NSZeroPoint, size: size)
-        var windowFrame = popoverWindow.frameRectForContentRect(contentRect)
-        windowFrame.origin = NSPoint(x: NSMidX(presentingFrameInScreen) - floor(windowFrame.size.width / 2), y: NSMinY(presentingFrameInScreen) - windowFrame.size.height)
-        return windowFrame
     }
     
     // MARK - Popover window management
@@ -93,11 +75,15 @@ class PopoverController: NSObject, NSWindowDelegate {
         
         if let window = positioningView.window {
             let frameInWindow = positioningView.convertRect(positioningRect, toView: nil)
-            presentingFrameInScreen = window.convertRectToScreen(frameInWindow)
+            let presentingFrameInScreen = window.convertRectToScreen(frameInWindow)
             
-            NSApp.activateIgnoringOtherApps(true)
+            let contentRect = NSRect(origin: NSZeroPoint, size: contentSize)
+            var windowFrame = popoverWindow.frameRectForContentRect(contentRect)
+            windowFrame.origin = NSPoint(x: NSMidX(presentingFrameInScreen) - floor(windowFrame.size.width / 2), y: NSMinY(presentingFrameInScreen) - windowFrame.size.height)
+            
             popoverWindow.alphaValue = 0
-            popoverWindow.setFrame(popoverFrameWithSize(contentSize), display: true)
+            popoverWindow.setFrame(windowFrame, display: true)
+            NSApp.activateIgnoringOtherApps(true)
             popoverWindow.makeKeyAndOrderFront(nil)
             
             NSAnimationContext.beginGrouping()

@@ -10,64 +10,7 @@ import Cocoa
 
 class PopoverContainerView: NSView {
     
-    private var clippingView: PopoverClippingView!
-    
-    var arrowX: CGFloat {
-        get { return clippingView.arrowX }
-        set { clippingView.arrowX = newValue }
-    }
-    
-    var arrowWidth: CGFloat {
-        get { return clippingView.arrowWidth }
-        set { clippingView.arrowWidth = newValue }
-    }
-    
-    var arrowHeight: CGFloat {
-        get { return clippingView.arrowHeight }
-        set { clippingView.arrowHeight = newValue }
-    }
-    
-    var cornerRadius: CGFloat {
-        get { return clippingView.cornerRadius }
-        set { clippingView.cornerRadius = newValue }
-    }
-    
-    var borderWidth: CGFloat {
-        get { return clippingView.borderWidth }
-        set { clippingView.borderWidth = newValue }
-    }
-    
-    var borderColor: NSColor {
-        get { return clippingView.borderColor }
-        set { clippingView.borderColor = newValue }
-    }
-    
-    var backgroundColor: NSColor = NSColor.whiteColor() {
-        didSet { self.needsDisplay = true }
-    }
-    
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-        clippingView = PopoverClippingView(frame: self.bounds)
-        clippingView.autoresizingMask = NSAutoresizingMaskOptions.ViewHeightSizable.union(NSAutoresizingMaskOptions.ViewWidthSizable)
-        self.addSubview(clippingView)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
-        backgroundColor.set()
-        NSRectFill(dirtyRect)
-    }
-}
-
-class PopoverClippingView: NSView {
-    var path: NSBezierPath? {
-        didSet { self.needsDisplay = true }
-    }
+    var clippingView: NSView!
     
     var arrowX: CGFloat = 0 {
         didSet { self.needsDisplay = true }
@@ -78,11 +21,17 @@ class PopoverClippingView: NSView {
     }
     
     var arrowHeight: CGFloat = 12 {
-        didSet { self.needsDisplay = true }
+        didSet {
+            self.needsDisplay = true
+            clippingView.frame = NSRect(x: 0, y: 0, width: NSWidth(self.bounds), height: NSHeight(self.bounds) - arrowHeight)
+        }
     }
     
     var cornerRadius: CGFloat = 10 {
-        didSet { self.needsDisplay = true }
+        didSet {
+            self.needsDisplay = true
+            clippingView.layer?.cornerRadius = cornerRadius
+        }
     }
     
     var borderWidth: CGFloat = 1 {
@@ -93,36 +42,27 @@ class PopoverClippingView: NSView {
         didSet { self.needsDisplay = true }
     }
     
-    func CGPathFromNSBezierPath(nsPath: NSBezierPath) -> CGPath! {
-        
-        if nsPath.elementCount == 0 {
-            return nil
-        }
-        
-        let path = CGPathCreateMutable()
-        var didClosePath = false
-        
-        for i in 0..<nsPath.elementCount {
-            var points = [NSPoint](count: 3, repeatedValue: NSZeroPoint)
-            
-            switch nsPath.elementAtIndex(i, associatedPoints: &points) {
-            case .MoveToBezierPathElement:CGPathMoveToPoint(path, nil, points[0].x, points[0].y)
-            case .LineToBezierPathElement:CGPathAddLineToPoint(path, nil, points[0].x, points[0].y)
-            case .CurveToBezierPathElement:CGPathAddCurveToPoint(path, nil, points[0].x, points[0].y, points[1].x, points[1].y, points[2].x, points[2].y)
-            case .ClosePathBezierPathElement:CGPathCloseSubpath(path)
-            didClosePath = true
-            }
-        }
-        
-        if !didClosePath {
-            CGPathCloseSubpath(path)
-        }
-        
-        return CGPathCreateCopy(path)
+    var backgroundColor: NSColor = NSColor.whiteColor() {
+        didSet { self.needsDisplay = true }
     }
     
-    override func hitTest(aPoint: NSPoint) -> NSView? {
-        return nil
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        clippingView = NSView(frame: NSRect(x: 0, y: 0, width: NSWidth(self.bounds), height: NSHeight(self.bounds) - arrowHeight))
+        clippingView.autoresizingMask = NSAutoresizingMaskOptions.ViewHeightSizable.union(NSAutoresizingMaskOptions.ViewWidthSizable)
+        clippingView.wantsLayer = true
+        clippingView.layer?.cornerRadius = cornerRadius
+        clippingView.layer?.masksToBounds = true
+        self.addSubview(clippingView)
     }
     
     override func drawRect(dirtyRect: NSRect) {
@@ -157,11 +97,7 @@ class PopoverClippingView: NSView {
         borderColor.setStroke()
         path.stroke()
         
-        let currentContext = NSGraphicsContext.currentContext()?.CGContext;
-        CGContextAddRect(currentContext, self.bounds);
-        CGContextAddPath(currentContext, CGPathFromNSBezierPath(path));
-        CGContextSetBlendMode(currentContext, .Copy);
-        NSColor.clearColor().set();
-        CGContextEOFillPath(currentContext);
+        backgroundColor.setFill()
+        path.fill()
     }
 }

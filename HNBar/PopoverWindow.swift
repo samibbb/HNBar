@@ -31,11 +31,6 @@ class PopoverWindow: NSWindow {
         set { popoverContainerView.cornerRadius = newValue }
     }
     
-    var popoverBackgroundColor: NSColor! {
-        get { return popoverContainerView.backgroundColor }
-        set { popoverContainerView.backgroundColor = newValue }
-    }
-    
     var borderWidth: CGFloat {
         get { return popoverContainerView.borderWidth }
         set { popoverContainerView.borderWidth = newValue }
@@ -46,28 +41,23 @@ class PopoverWindow: NSWindow {
         set { popoverContainerView.borderColor = newValue }
     }
     
+    var popoverBackgroundColor: NSColor! {
+        get { return popoverContainerView.backgroundColor }
+        set { popoverContainerView.backgroundColor = newValue }
+    }
+    
     // MARK: Properties
     private var popoverContainerView = PopoverContainerView()
     
-    private var _popoverContentView: NSView?
     var popoverContentView: NSView? {
-        get {
-            return _popoverContentView
-        }
-        set {
-            if newValue == _popoverContentView {
-                return
-            }
+        didSet {
+            oldValue?.removeFromSuperview()
             
-            _popoverContentView?.removeFromSuperview()
-            
-            _popoverContentView = newValue
-            
-            if let popoverContentView = _popoverContentView {
+            if let popoverContentView = popoverContentView {
                 let bounds = NSRect(origin: NSZeroPoint, size: self.frame.size)
                 popoverContentView.frame = contentRectForFrameRect(bounds)
                 popoverContentView.autoresizingMask = NSAutoresizingMaskOptions.ViewHeightSizable.union(NSAutoresizingMaskOptions.ViewWidthSizable)
-                popoverContainerView.addSubview(popoverContentView, positioned: .Below, relativeTo: nil)
+                popoverContainerView.clippingView.addSubview(popoverContentView)
             }
         }
     }
