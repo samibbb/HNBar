@@ -10,14 +10,14 @@ import Cocoa
 
 class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     
+    // MARK: - Properties
+    // MARK: Private
     private let hackerNewsUrl = "https://news.ycombinator.com"
     
-    // MARK: Firebase properties
     private var isFetching = false
     private var stories: Array<Story> = Array()
     private var firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
     
-    // MARK: Views
     @IBOutlet private var separatorView: ColorView!
     @IBOutlet private var tableView: NSTableView!
     @IBOutlet private var scrollView: NSScrollView!

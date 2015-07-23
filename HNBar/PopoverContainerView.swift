@@ -13,37 +13,37 @@ class PopoverContainerView: NSView {
     var clippingView: NSView!
     
     var arrowX: CGFloat = 0 {
-        didSet { self.needsDisplay = true }
+        didSet { needsDisplay = true }
     }
     
     var arrowWidth: CGFloat = 23 {
-        didSet { self.needsDisplay = true }
+        didSet { needsDisplay = true }
     }
     
     var arrowHeight: CGFloat = 12 {
         didSet {
-            self.needsDisplay = true
-            clippingView.frame = NSRect(x: 0, y: 0, width: NSWidth(self.bounds), height: NSHeight(self.bounds) - arrowHeight)
+            needsDisplay = true
+            clippingView.frame = NSRect(x: 0, y: 0, width: NSWidth(bounds), height: NSHeight(bounds) - arrowHeight)
         }
     }
     
     var cornerRadius: CGFloat = 10 {
         didSet {
-            self.needsDisplay = true
+            needsDisplay = true
             clippingView.layer?.cornerRadius = cornerRadius
         }
     }
     
     var borderWidth: CGFloat = 1 {
-        didSet { self.needsDisplay = true }
+        didSet { needsDisplay = true }
     }
     
     var borderColor: NSColor = NSColor(calibratedWhite: 0, alpha: 0.3) {
-        didSet { self.needsDisplay = true }
+        didSet { needsDisplay = true }
     }
     
     var backgroundColor: NSColor = NSColor.whiteColor() {
-        didSet { self.needsDisplay = true }
+        didSet { needsDisplay = true }
     }
     
     override init(frame frameRect: NSRect) {
@@ -57,16 +57,16 @@ class PopoverContainerView: NSView {
     }
     
     func commonInit() {
-        clippingView = NSView(frame: NSRect(x: 0, y: 0, width: NSWidth(self.bounds), height: NSHeight(self.bounds) - arrowHeight))
+        clippingView = NSView(frame: NSRect(x: 0, y: 0, width: NSWidth(bounds), height: NSHeight(bounds) - arrowHeight))
         clippingView.autoresizingMask = NSAutoresizingMaskOptions.ViewHeightSizable.union(NSAutoresizingMaskOptions.ViewWidthSizable)
         clippingView.wantsLayer = true
         clippingView.layer?.cornerRadius = cornerRadius
         clippingView.layer?.masksToBounds = true
-        self.addSubview(clippingView)
+        addSubview(clippingView)
     }
     
     override func drawRect(dirtyRect: NSRect) {
-        let contentRect = NSInsetRect(self.bounds, borderWidth, borderWidth)
+        let contentRect = NSInsetRect(bounds, borderWidth, borderWidth)
         let path = NSBezierPath()
         
         path.moveToPoint(NSPoint(x: arrowX, y: NSMaxY(contentRect)))

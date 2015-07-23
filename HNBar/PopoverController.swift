@@ -10,7 +10,7 @@ import Cocoa
 
 class PopoverController: NSObject, NSWindowDelegate {
     
-    // MARK: - Public properties
+    // MARK: - Properties
     var openAnimationDuration = 0.15
     var closeAnimationDuration = 0.15
     
@@ -58,7 +58,7 @@ class PopoverController: NSObject, NSWindowDelegate {
     
     var contentSize: NSSize = NSZeroSize
     
-    // MARK: - Private properties
+    // MARK: Private
     private var popoverWindow = PopoverWindow()
     
     // MARK: - Init
@@ -67,7 +67,7 @@ class PopoverController: NSObject, NSWindowDelegate {
         popoverWindow.delegate = self
     }
     
-    // MARK - Popover window management
+    // MARK: - Popover management
     func showRelativeToRect(positioningRect: NSRect, ofView positioningView: NSView, preferredEdge: NSRectEdge) {
         if shown {
             return
@@ -103,20 +103,20 @@ class PopoverController: NSObject, NSWindowDelegate {
         popoverWindow.animator().alphaValue = 0
         NSAnimationContext.endGrouping()
         
-        self.popoverWindow.orderOut(nil)
+        popoverWindow.orderOut(nil)
     }
     
     // MARK: - NSWindowDelegate
     func windowDidResize(notification: NSNotification) {
-        popoverWindow.arrowX = self.contentSize.width / 2
+        popoverWindow.arrowX = contentSize.width / 2
     }
     
     func windowWillClose(notification: NSNotification) {
-        self.close()
+        close()
     }
     
     func windowDidResignKey(notification: NSNotification) {
-        self.close()
+        close()
     }
     
 }

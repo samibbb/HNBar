@@ -11,10 +11,9 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    let popover = PopoverController()
-    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
-    let hackerNewsViewController = HackerNewsViewController()
-//    let panelController = HackerNewsPanelController()
+    private let popover = PopoverController()
+    private let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    private let hackerNewsViewController = HackerNewsViewController()
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         if let button = statusItem.button {
@@ -23,10 +22,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         popover.contentViewController = hackerNewsViewController
-    }
-
-    func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
     }
     
     func showPopover(sender: AnyObject?) {

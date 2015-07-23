@@ -11,17 +11,17 @@ import Cocoa
 class ColorView: NSView {
 
     var backgroundColor: NSColor = NSColor.whiteColor() {
-        didSet { self.needsDisplay = true }
+        didSet { needsDisplay = true }
     }
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        self.wantsLayer = true
+        wantsLayer = true
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.wantsLayer = true
+        wantsLayer = true
     }
     
     override func drawRect(dirtyRect: NSRect) {

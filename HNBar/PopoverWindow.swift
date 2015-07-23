@@ -10,7 +10,25 @@ import Cocoa
 
 class PopoverWindow: NSWindow {
     
-    // MARK: Forwarded properties
+    // MARK: - Properties
+    var popoverContentView: NSView? {
+        didSet {
+            oldValue?.removeFromSuperview()
+            
+            if let popoverContentView = popoverContentView {
+                let bounds = NSRect(origin: NSZeroPoint, size: frame.size)
+                popoverContentView.frame = contentRectForFrameRect(bounds)
+                popoverContentView.autoresizingMask = NSAutoresizingMaskOptions.ViewHeightSizable.union(NSAutoresizingMaskOptions.ViewWidthSizable)
+                popoverContainerView.clippingView.addSubview(popoverContentView)
+            }
+        }
+    }
+    
+    override var canBecomeKeyWindow: Bool {
+        return true
+    }
+    
+    // MARK: Forwarded
     var arrowX: CGFloat {
         get { return popoverContainerView.arrowX }
         set { popoverContainerView.arrowX = newValue }
@@ -46,25 +64,8 @@ class PopoverWindow: NSWindow {
         set { popoverContainerView.backgroundColor = newValue }
     }
     
-    // MARK: Properties
+    // MARK: Private
     private var popoverContainerView = PopoverContainerView()
-    
-    var popoverContentView: NSView? {
-        didSet {
-            oldValue?.removeFromSuperview()
-            
-            if let popoverContentView = popoverContentView {
-                let bounds = NSRect(origin: NSZeroPoint, size: self.frame.size)
-                popoverContentView.frame = contentRectForFrameRect(bounds)
-                popoverContentView.autoresizingMask = NSAutoresizingMaskOptions.ViewHeightSizable.union(NSAutoresizingMaskOptions.ViewWidthSizable)
-                popoverContainerView.clippingView.addSubview(popoverContentView)
-            }
-        }
-    }
-    
-    override var canBecomeKeyWindow: Bool {
-        return true
-    }
     
     // MARK: - Init
     override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
@@ -81,7 +82,7 @@ class PopoverWindow: NSWindow {
         opaque = false
         backgroundColor = NSColor.clearColor()
         hasShadow = true
-        contentView = self.popoverContainerView
+        contentView = popoverContainerView
     }
     
     // MARK: - Helpers
