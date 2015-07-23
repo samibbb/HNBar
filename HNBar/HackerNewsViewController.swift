@@ -117,6 +117,19 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
         return cell
     }
     
+    // MARK: - NSTableViewDelegate
+    func tableViewSelectionDidChange(notification: NSNotification) {
+        let row = tableView.selectedRow
+        
+        if row < 0 || row >= stories.count {
+            return
+        }
+        
+        let story = stories[row]
+        NSWorkspace.sharedWorkspace().openURL(story.url)
+        tableView.deselectAll(self)
+    }
+    
     // MARK: - Button handlers
     @IBAction func webButtonClicked(sender: AnyObject?) {
         if let url = NSURL(string: hackerNewsUrl) {
