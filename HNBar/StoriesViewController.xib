@@ -161,7 +161,7 @@
                                     <menu key="menu" id="hUY-b6-Og2">
                                         <items>
                                             <menuItem state="on" image="NSActionTemplate" hidden="YES" id="tGo-Wn-rzy"/>
-                                            <menuItem title="About" id="cHU-ZI-Bzt" userLabel="About">
+                                            <menuItem title="About HNBar" id="cHU-ZI-Bzt" userLabel="About HNBar">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                                 <connections>
                                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="OTk-B4-aYC"/>
