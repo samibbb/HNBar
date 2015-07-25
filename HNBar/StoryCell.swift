@@ -1,5 +1,5 @@
 //
-//  HackerNewsStoryCell.swift
+//  StoryCell.swift
 //  HNBar
 //
 //  Created by James on 2015-07-22.
@@ -8,7 +8,19 @@
 
 import Cocoa
 
-class HackerNewsStoryCell: NSView {
+class StoryCell: NSView {
+    
+    static var reuseIdentifier: String {
+        return "StoryCell"
+    }
+    
+    static var nibName: String {
+       return "StoryCell"
+    }
+    
+    static var nibBundle: NSBundle {
+        return NSBundle.mainBundle()
+    }
     
     // MARK: - Properties
     var hoverBackgroundColor = NSColor(calibratedWhite: 0.94, alpha: 1) {
@@ -33,7 +45,6 @@ class HackerNewsStoryCell: NSView {
         if (story.type == "job") {
             bylineLabel.stringValue = ""
         } else {
-            
             var bylineText = "\(story.score) points by \(story.author)"
             if let commentCount = story.commentCount {
                 bylineText +=  " · \(commentCount) comments"

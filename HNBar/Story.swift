@@ -13,6 +13,7 @@ struct Story {
     var author: String
     var url: NSURL
     var commentCount: Int?
+    var commentUrl: NSURL
     var score: Int
     var type: String
 }

@@ -5,7 +5,7 @@
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HackerNewsViewController" customModule="HNBar" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="StoriesViewController">
             <connections>
                 <outlet property="tableView" destination="j8f-Bp-plJ" id="RSX-Ps-AzX"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>

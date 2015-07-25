@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private let popover = PopoverController()
     private let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
-    private let hackerNewsViewController = HackerNewsViewController()
+    private let storiesViewController = StoriesViewController()
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         if let button = statusItem.button {
@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.action = Selector("togglePopover:")
         }
         
-        popover.contentViewController = hackerNewsViewController
+        popover.contentViewController = storiesViewController
     }
     
     func showPopover(sender: AnyObject?) {

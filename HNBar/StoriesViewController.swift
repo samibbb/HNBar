@@ -1,5 +1,5 @@
 //
-//  HackerNewsViewController.swift
+//  StoriesViewController.swift
 //  HNBar
 //
 //  Created by James on 2015-07-20.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     
     // MARK: - Properties
     // MARK: Private
@@ -28,7 +28,6 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
     }
     
     @IBOutlet private var tableView: NSTableView!
-    @IBOutlet private var scrollView: NSScrollView!
     
     // MARK: - View lifecycle
     override var nibBundle: NSBundle? {
@@ -36,12 +35,12 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
     }
     
     override var nibName: String? {
-        return "HackerNewsViewController"
+        return "StoriesViewController"
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        tableView.registerNib(NSNib(nibNamed: "HackerNewsStoryCell", bundle: NSBundle.mainBundle()), forIdentifier: "HackerNewsStoryCell")
+        tableView.registerNib(NSNib(nibNamed: StoryCell.nibName, bundle: StoryCell.nibBundle), forIdentifier: StoryCell.reuseIdentifier)
     }
     
     override func viewWillAppear() {
@@ -78,15 +77,16 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
                     let type = snapshot.value["type"] as! String
                     
                     var urlString = ""
+                    let commentUrlString = "\(self.hackerNewsUrl)/item?id=\(id)";
                     
                     if let url = snapshot.value["url"] as? String where url.characters.count > 0 {
                         urlString = url
                     } else {
-                        urlString = "\(self.hackerNewsUrl)/item?id=\(id)"
+                        urlString = commentUrlString
                     }
                     
-                    if let url = NSURL(string: urlString) {
-                        self.stories.append(Story(title: title, author: author, url: url, commentCount: commentCount, score: score, type: type))
+                    if let url = NSURL(string: urlString), commentUrl = NSURL(string: commentUrlString) {
+                        self.stories.append(Story(title: title, author: author, url: url, commentCount: commentCount, commentUrl: commentUrl, score: score, type: type))
                     }
                     else {
                         // error
@@ -117,7 +117,7 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
             return nil
         }
         
-        let cell = tableView.makeViewWithIdentifier("HackerNewsStoryCell", owner: self) as! HackerNewsStoryCell
+        let cell = tableView.makeViewWithIdentifier(StoryCell.reuseIdentifier, owner: self) as! StoryCell
         cell.populate(stories[row])
         return cell
     }
