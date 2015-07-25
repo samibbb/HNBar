@@ -28,21 +28,35 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lLk-uF-Eur">
-                    <rect key="frame" x="18" y="10" width="237" height="14"/>
+                    <rect key="frame" x="18" y="10" width="33" height="14"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Label" id="gGA-U2-mNV">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n0M-Kk-p95" customClass="LinkTextField" customModule="HNBar" customModuleProvider="target">
+                    <rect key="frame" x="47" y="10" width="33" height="14"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="EFC-Xv-DSQ">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="underlineColor">
+                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.28999999999999998" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="p2p-Lk-TCO" secondAttribute="trailing" constant="20" id="3lm-yn-nCS"/>
                 <constraint firstAttribute="bottom" secondItem="lLk-uF-Eur" secondAttribute="bottom" constant="10" id="501-EO-sa5"/>
                 <constraint firstItem="lLk-uF-Eur" firstAttribute="top" secondItem="cWF-xd-qWJ" secondAttribute="bottom" constant="4" id="HjR-O6-7dV"/>
+                <constraint firstItem="n0M-Kk-p95" firstAttribute="leading" secondItem="lLk-uF-Eur" secondAttribute="trailing" id="IZT-Mp-PlJ"/>
                 <constraint firstItem="cWF-xd-qWJ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="MA9-aK-YiU"/>
                 <constraint firstItem="p2p-Lk-TCO" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="Qe5-4q-f46"/>
-                <constraint firstAttribute="trailing" secondItem="lLk-uF-Eur" secondAttribute="trailing" constant="20" id="ZHM-sc-uze"/>
+                <constraint firstItem="n0M-Kk-p95" firstAttribute="baseline" secondItem="lLk-uF-Eur" secondAttribute="baseline" id="YL6-ec-bFW"/>
                 <constraint firstAttribute="trailing" secondItem="cWF-xd-qWJ" secondAttribute="trailing" constant="20" id="lmQ-5y-okh"/>
                 <constraint firstItem="p2p-Lk-TCO" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="pDD-DN-RIk"/>
                 <constraint firstItem="lLk-uF-Eur" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="plV-Bi-ppw"/>
@@ -50,6 +64,7 @@
             </constraints>
             <connections>
                 <outlet property="bylineLabel" destination="lLk-uF-Eur" id="3Mq-54-B6C"/>
+                <outlet property="commentLinkLabel" destination="n0M-Kk-p95" id="F99-g4-kvz"/>
                 <outlet property="hostnameLabel" destination="cWF-xd-qWJ" id="JKt-LP-JsA"/>
                 <outlet property="titleLabel" destination="p2p-Lk-TCO" id="ane-1D-ZYc"/>
             </connections>

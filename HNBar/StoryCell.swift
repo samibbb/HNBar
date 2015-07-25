@@ -36,20 +36,26 @@ class StoryCell: NSView {
     @IBOutlet private var titleLabel: NSTextField!
     @IBOutlet private var hostnameLabel: NSTextField!
     @IBOutlet private var bylineLabel: NSTextField!
+    @IBOutlet private var commentLinkLabel: LinkTextField!
     
     // MARK: - Setup
     func populate(story: Story) {
         titleLabel.stringValue = story.title
         hostnameLabel.stringValue = story.url.host ?? ""
+        commentLinkLabel.url = story.commentUrl
         
         if (story.type == "job") {
             bylineLabel.stringValue = ""
+            commentLinkLabel.stringValue = ""
         } else {
             var bylineText = "\(story.score) points by \(story.author)"
+            var commentLinkText = ""
             if let commentCount = story.commentCount {
-                bylineText +=  " · \(commentCount) comments"
+                bylineText +=  " · "
+                commentLinkText = "\(commentCount) comments"
             }
             bylineLabel.stringValue = bylineText
+            commentLinkLabel.stringValue = commentLinkText
         }
     }
     
