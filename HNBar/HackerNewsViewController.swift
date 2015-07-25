@@ -18,7 +18,15 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
     private var stories: Array<Story> = Array()
     private var firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
     
-    @IBOutlet private var separatorView: ColorView!
+    var launchAtLogin: Bool {
+        get {
+            return LoginItemHelper.launchAtLogin
+        }
+        set {
+            LoginItemHelper.launchAtLogin = newValue
+        }
+    }
+    
     @IBOutlet private var tableView: NSTableView!
     @IBOutlet private var scrollView: NSScrollView!
     
@@ -33,8 +41,6 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        separatorView.backgroundColor = NSColor(colorLiteralRed: 204/255, green: 204/255, blue: 204/255, alpha: 1)
-        
         tableView.registerNib(NSNib(nibNamed: "HackerNewsStoryCell", bundle: NSBundle.mainBundle()), forIdentifier: "HackerNewsStoryCell")
     }
     
@@ -92,13 +98,12 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
                         self.isFetching = false
                     }
                     
-                    }, withCancelBlock: { error in
+                }, withCancelBlock: { error in
                         // error
                 })
             }
-            }, withCancelBlock: { error in
-                self.isFetching = false
-                // error
+        }, withCancelBlock: { error in
+            self.isFetching = false
         })
     }
     
@@ -131,13 +136,17 @@ class HackerNewsViewController: NSViewController, NSTableViewDataSource, NSTable
     }
     
     // MARK: - Button handlers
-    @IBAction func webButtonClicked(sender: AnyObject?) {
+    @IBAction func webButtonClicked(sender: NSButton?) {
         if let url = NSURL(string: hackerNewsUrl) {
             NSWorkspace.sharedWorkspace().openURL(url)
         }
     }
     
-    @IBAction func refreshButtonClicked(sender: AnyObject?) {
+    @IBAction func refreshButtonClicked(sender: NSButton?) {
         fetchStories()
+    }
+    
+    @IBAction func aboutItemSelected(sender: NSMenuItem?) {
+        
     }
 }

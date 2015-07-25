@@ -8,9 +8,10 @@
 
 import Cocoa
 
+@IBDesignable
 class ColorView: NSView {
 
-    var backgroundColor: NSColor = NSColor.whiteColor() {
+    @IBInspectable var backgroundColor: NSColor = NSColor.whiteColor() {
         didSet { needsDisplay = true }
     }
     

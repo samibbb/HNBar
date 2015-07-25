@@ -17,6 +17,7 @@
 		147C60251B5C256A001575C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147C60241B5C256A001575C5 /* AppDelegate.swift */; };
 		147C60271B5C256A001575C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 147C60261B5C256A001575C5 /* Assets.xcassets */; };
 		147C602A1B5C256A001575C5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147C60281B5C256A001575C5 /* MainMenu.xib */; };
+		148DE8ED1B633C2C0029278C /* LoginItemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148DE8EC1B633C2C0029278C /* LoginItemHelper.swift */; };
 		1496B5A31B61410F006FE61D /* EmptyRowTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496B5A21B61410F006FE61D /* EmptyRowTableView.swift */; };
 		14D516FC1B5FD51B0069E66E /* HackerNewsStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D516FB1B5FD51B0069E66E /* HackerNewsStoryCell.swift */; };
 		14D516FE1B5FD5270069E66E /* HackerNewsStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14D516FD1B5FD5270069E66E /* HackerNewsStoryCell.xib */; };
@@ -36,6 +37,7 @@
 		147C60261B5C256A001575C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		147C60291B5C256A001575C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		147C602B1B5C256A001575C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		148DE8EC1B633C2C0029278C /* LoginItemHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginItemHelper.swift; sourceTree = "<group>"; };
 		1496B5A21B61410F006FE61D /* EmptyRowTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyRowTableView.swift; sourceTree = "<group>"; };
 		14A1D2971B5C49F4003CDC6C /* HNBar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HNBar-Bridging-Header.h"; sourceTree = "<group>"; };
 		14D516FB1B5FD51B0069E66E /* HackerNewsStoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackerNewsStoryCell.swift; sourceTree = "<group>"; };
@@ -121,9 +123,18 @@
 				143DA6951B5ED7B5001734F7 /* Views */,
 				147A130A1B5D8A9500C51FEF /* Controllers */,
 				147A13101B5DA1EE00C51FEF /* Popover */,
+				148DE8EE1B63D3390029278C /* Utils */,
 				1496B5A11B613EF5006FE61D /* Supporting Files */,
 			);
 			path = HNBar;
+			sourceTree = "<group>";
+		};
+		148DE8EE1B63D3390029278C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				148DE8EC1B633C2C0029278C /* LoginItemHelper.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		1496B5A11B613EF5006FE61D /* Supporting Files */ = {
@@ -261,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				148DE8ED1B633C2C0029278C /* LoginItemHelper.swift in Sources */,
 				14D516FC1B5FD51B0069E66E /* HackerNewsStoryCell.swift in Sources */,
 				147A131F1B5DCF7200C51FEF /* ColorView.swift in Sources */,
 				147A12FA1B5D695E00C51FEF /* PopoverContainerView.swift in Sources */,
