@@ -32,7 +32,7 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
             }
         }
     }
-    private var stories: Array<Story> = []
+    private var stories: [Story] = []
     private var firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
     
     @IBOutlet private var tableView: NSTableView!
