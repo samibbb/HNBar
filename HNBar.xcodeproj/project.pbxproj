@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14248D971B642961003FF055 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 14248D961B642961003FF055 /* Credits.rtf */; };
 		1447CF471B63FDEF00DDD669 /* LinkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1447CF461B63FDEF00DDD669 /* LinkTextField.swift */; };
 		147A12FA1B5D695E00C51FEF /* PopoverContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A12F91B5D695E00C51FEF /* PopoverContainerView.swift */; };
 		147A13011B5D6F5600C51FEF /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A12FF1B5D6F5600C51FEF /* StoriesViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14248D961B642961003FF055 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		1447CF461B63FDEF00DDD669 /* LinkTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkTextField.swift; sourceTree = "<group>"; };
 		147A12F91B5D695E00C51FEF /* PopoverContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverContainerView.swift; sourceTree = "<group>"; };
 		147A12FF1B5D6F5600C51FEF /* StoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
@@ -144,9 +146,10 @@
 			isa = PBXGroup;
 			children = (
 				147C60261B5C256A001575C5 /* Assets.xcassets */,
+				147C60241B5C256A001575C5 /* AppDelegate.swift */,
+				14248D961B642961003FF055 /* Credits.rtf */,
 				14A1D2971B5C49F4003CDC6C /* HNBar-Bridging-Header.h */,
 				147C602B1B5C256A001575C5 /* Info.plist */,
-				147C60241B5C256A001575C5 /* AppDelegate.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14248D971B642961003FF055 /* Credits.rtf in Resources */,
 				14D516FE1B5FD5270069E66E /* StoryCell.xib in Resources */,
 				147C60271B5C256A001575C5 /* Assets.xcassets in Resources */,
 				147C602A1B5C256A001575C5 /* MainMenu.xib in Resources */,

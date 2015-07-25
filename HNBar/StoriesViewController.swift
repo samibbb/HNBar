@@ -155,8 +155,4 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
     @IBAction func refreshButtonClicked(sender: NSButton?) {
         fetchStories()
     }
-    
-    @IBAction func aboutItemSelected(sender: NSMenuItem?) {
-        
-    }
 }
