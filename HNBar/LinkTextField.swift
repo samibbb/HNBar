@@ -68,12 +68,10 @@ class LinkTextField: NSTextField {
     }
     
     override func mouseEntered(theEvent: NSEvent) {
-        super.mouseEntered(theEvent)
         mouseInside = true
     }
     
     override func mouseExited(theEvent: NSEvent) {
-        super.mouseExited(theEvent)
         mouseInside = false
     }
     
