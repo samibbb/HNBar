@@ -109,6 +109,11 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
                     }
                     
                 }, withCancelBlock: { error in
+                    if ++storiesProcessed == ids.count {
+                        self.tableView.scrollPoint(NSZeroPoint)
+                        self.tableView.reloadData()
+                        self.isFetching = false
+                    }
                         // error
                 })
             }
