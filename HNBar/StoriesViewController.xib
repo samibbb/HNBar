@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="StoriesViewController">
             <connections>
+                <outlet property="progressIndicator" destination="0fk-F7-La6" id="Psh-hK-8K3"/>
                 <outlet property="tableView" destination="j8f-Bp-plJ" id="RSX-Ps-AzX"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -188,6 +189,9 @@
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
+                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0fk-F7-La6">
+                    <rect key="frame" x="167" y="362" width="16" height="16"/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="DCh-og-RID" firstAttribute="top" secondItem="jPl-y8-wD7" secondAttribute="bottom" id="4my-gj-Hny"/>
@@ -200,8 +204,10 @@
                 <constraint firstItem="d4C-Kn-RJe" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Md7-vO-qdc"/>
                 <constraint firstItem="iTI-EG-KWw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="RZH-z7-GhE"/>
                 <constraint firstItem="iTI-EG-KWw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="YL1-Lr-dNh"/>
+                <constraint firstItem="0fk-F7-La6" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Zmv-V1-Le6"/>
                 <constraint firstItem="tST-fO-mCs" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="aDc-41-RLa"/>
                 <constraint firstAttribute="trailing" secondItem="DCh-og-RID" secondAttribute="trailing" id="dz3-Yh-eOb"/>
+                <constraint firstItem="0fk-F7-La6" firstAttribute="top" secondItem="iTI-EG-KWw" secondAttribute="bottom" constant="20" id="fF5-8G-Gg6"/>
                 <constraint firstItem="jPl-y8-wD7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="mVt-DP-0us"/>
                 <constraint firstItem="DCh-og-RID" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="oSv-A6-SEC"/>
                 <constraint firstAttribute="trailing" secondItem="tST-fO-mCs" secondAttribute="trailing" id="qbe-rj-eDA"/>

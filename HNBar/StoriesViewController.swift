@@ -14,7 +14,15 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
     // MARK: Private
     private let hackerNewsUrl = "https://news.ycombinator.com"
     
-    private var isFetching = false
+    private var isFetching = false {
+        didSet {
+            if isFetching {
+                progressIndicator.startAnimation(nil)
+            } else {
+                progressIndicator.stopAnimation(nil)
+            }
+        }
+    }
     private var stories: Array<Story> = Array()
     private var firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
     
@@ -28,6 +36,7 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
     }
     
     @IBOutlet private var tableView: NSTableView!
+    @IBOutlet private var progressIndicator: NSProgressIndicator!
     
     // MARK: - View lifecycle
     override var nibBundle: NSBundle? {
@@ -59,6 +68,7 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
         
         isFetching = true
         stories = []
+        tableView.reloadData()
         
         var storiesProcessed = 0
         
