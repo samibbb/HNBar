@@ -155,7 +155,7 @@
                         <subviews>
                             <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="LM4-Oj-XY7">
                                 <rect key="frame" x="301" y="7" width="39" height="19"/>
-                                <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="cHU-ZI-Bzt" id="OKh-Rh-Q1c">
+                                <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="OKh-Rh-Q1c">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="hUY-b6-Og2">
