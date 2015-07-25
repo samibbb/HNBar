@@ -11,6 +11,15 @@ import Cocoa
 class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     
     // MARK: - Properties
+    var launchAtLogin: Bool {
+        get {
+            return LoginItemHelper.launchAtLogin
+        }
+        set {
+            LoginItemHelper.launchAtLogin = newValue
+        }
+    }
+    
     // MARK: Private
     private let hackerNewsUrl = "https://news.ycombinator.com"
     
@@ -23,17 +32,8 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
             }
         }
     }
-    private var stories: Array<Story> = Array()
+    private var stories: Array<Story> = []
     private var firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
-    
-    var launchAtLogin: Bool {
-        get {
-            return LoginItemHelper.launchAtLogin
-        }
-        set {
-            LoginItemHelper.launchAtLogin = newValue
-        }
-    }
     
     @IBOutlet private var tableView: NSTableView!
     @IBOutlet private var progressIndicator: NSProgressIndicator!
