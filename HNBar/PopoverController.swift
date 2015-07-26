@@ -73,7 +73,7 @@ class PopoverController: NSObject {
             return
         }
         
-        if let window = positioningView.window, screen = NSScreen.mainScreen() {
+        if let window = positioningView.window, screen = window.screen {
             let frameInWindow = positioningView.convertRect(positioningRect, toView: nil)
             let presentingFrameInScreen = window.convertRectToScreen(frameInWindow)
             
@@ -81,7 +81,7 @@ class PopoverController: NSObject {
             var windowFrame = popoverWindow.frameRectForContentRect(contentRect)
             windowFrame.origin = NSPoint(x: NSMidX(presentingFrameInScreen) - floor(windowFrame.size.width / 2), y: NSMinY(presentingFrameInScreen) - windowFrame.size.height)
             
-            if NSMaxX(windowFrame) > NSWidth(screen.frame) {
+            if NSMaxX(windowFrame) > NSMaxX(screen.frame) {
                 windowFrame.origin.x = NSWidth(screen.frame) - NSWidth(windowFrame) - 15
             }
             
