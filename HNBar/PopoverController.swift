@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PopoverController: NSObject, NSWindowDelegate {
+class PopoverController: NSObject {
     
     // MARK: - Properties
     var openAnimationDuration = 0.15
@@ -105,8 +105,12 @@ class PopoverController: NSObject, NSWindowDelegate {
         
         popoverWindow.orderOut(nil)
     }
+
+}
+
+// MARK: - NSWindowDelegate
+extension PopoverController: NSWindowDelegate {
     
-    // MARK: - NSWindowDelegate
     func windowDidResize(notification: NSNotification) {
         popoverWindow.arrowX = contentSize.width / 2
     }

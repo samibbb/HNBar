@@ -59,7 +59,7 @@ class StoryCell: NSView {
         }
     }
     
-    // MARK: - Drawing
+    // MARK: - Mouse
     override func updateTrackingAreas() {
         super.updateTrackingAreas()
         
@@ -79,6 +79,7 @@ class StoryCell: NSView {
         mouseInside = false
     }
     
+    // MARK: - Drawing
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         

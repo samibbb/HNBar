@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+class StoriesViewController: NSViewController {
     
     // MARK: - Properties
     var launchAtLogin: Bool {
@@ -122,7 +122,21 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
         })
     }
     
-    // MARK: - NSTableViewDataSource
+    // MARK: - Button handlers
+    @IBAction func webButtonClicked(sender: NSButton?) {
+        if let url = NSURL(string: hackerNewsUrl) {
+            NSWorkspace.sharedWorkspace().openURL(url)
+        }
+    }
+    
+    @IBAction func refreshButtonClicked(sender: NSButton?) {
+        fetchStories()
+    }
+}
+
+// MARK: - NSTableViewDataSource
+extension StoriesViewController: NSTableViewDataSource {
+    
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return stories.count
     }
@@ -137,7 +151,11 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
         return cell
     }
     
-    // MARK: - NSTableViewDelegate
+}
+
+// MARK: - NSTableViewDelegate
+extension StoriesViewController: NSTableViewDelegate {
+    
     func tableViewSelectionDidChange(notification: NSNotification) {
         let row = tableView.selectedRow
         
@@ -150,14 +168,4 @@ class StoriesViewController: NSViewController, NSTableViewDataSource, NSTableVie
         tableView.deselectAll(self)
     }
     
-    // MARK: - Button handlers
-    @IBAction func webButtonClicked(sender: NSButton?) {
-        if let url = NSURL(string: hackerNewsUrl) {
-            NSWorkspace.sharedWorkspace().openURL(url)
-        }
-    }
-    
-    @IBAction func refreshButtonClicked(sender: NSButton?) {
-        fetchStories()
-    }
 }
