@@ -48,7 +48,7 @@ class LinkTextField: NSTextField {
         removeObserver(self, forKeyPath: "stringValue")
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "stringValue" {
             cachedAttributedString = nil
             cachedHoverAttributedString = nil
