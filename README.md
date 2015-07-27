@@ -1,6 +1,6 @@
 # HNBar
 
-An OS X application to view the top Hacker News stories from your status bar.
+An OS X application to view the top Hacker News stories from your menu bar.
 
 ## Building
 
